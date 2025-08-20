@@ -5,16 +5,23 @@ import { guestRegex, isDevelopmentEnvironment } from './lib/constants';
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Skip middleware for static assets and API routes that don't need auth
+  if (
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/api/auth') ||
+    pathname.startsWith('/favicon.ico') ||
+    pathname.startsWith('/sitemap.xml') ||
+    pathname.startsWith('/robots.txt')
+  ) {
+    return NextResponse.next();
+  }
+
   /*
    * Playwright starts the dev server and requires a 200 status to
    * begin the tests, so this ensures that the tests can start
    */
   if (pathname.startsWith('/ping')) {
     return new Response('pong', { status: 200 });
-  }
-
-  if (pathname.startsWith('/api/auth')) {
-    return NextResponse.next();
   }
 
   const token = await getToken({

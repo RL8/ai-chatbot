@@ -270,3 +270,4 @@ export function getSongsByAlbum(albumId: string): Song[] {
   const album = taylorSwiftData.albums.find(a => a.id === albumId);
   return album ? album.songs : [];
 }
+

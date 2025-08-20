@@ -67,3 +67,4 @@ export const MusicProvider: React.FC<MusicProviderProps> = ({ children }) => {
     <MusicContext.Provider value={value}>{children}</MusicContext.Provider>
   );
 };
+

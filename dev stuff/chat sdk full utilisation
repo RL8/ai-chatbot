@@ -1,0 +1,21 @@
+Of course. Here is a summary of the potential features for a `MessageContent` component, presented in a table format.
+
+| Feature Category | Specific Feature | Description & Use Case |
+| :--- | :--- | :--- |
+| **Core Functionality**\<br\>(*As seen in Vercel's repo*) | **Streaming Text** | Displays AI responses token-by-token, creating a real-time "typing" effect. |
+| | **Markdown Rendering** | Parses and displays formatted text like headers, lists, and bold/italic styles. |
+| | **Code Block Highlighting** | Applies color-coded syntax highlighting to code snippets for developer readability. |
+| --- | --- | --- |
+| **Interactive UI**\<br\>(*Broader possibilities*) | **Suggested Actions / Chips** | Offers clickable buttons to guide the conversation or trigger predefined actions. |
+| | **Embedded Forms** | Renders interactive forms directly in the chat to collect user input seamlessly. |
+| | **Custom UI Cards** | Displays structured data in a visual format, like a weather forecast or product summary. |
+| --- | --- | --- |
+| **Multimodal Content**\<br\>(*Broader possibilities*) | **Media Display** | Renders embedded images, videos, and audio players within the chat message. |
+| | **File Attachments** | Provides previews or download links for documents like PDFs and spreadsheets. |
+| --- | --- | --- |
+| **Status Indicators**\<br\>(*Broader possibilities*) | **Loading Skeletons** | Shows a placeholder UI, indicating that a complex component or data is loading. |
+| | **Error Displays** | Clearly renders an error message if an AI response fails or content can't be shown. |
+| --- | --- | --- |
+| **Specialized Content**\<br\>(*Broader possibilities*) | **LaTeX Rendering** | Parses and displays complex mathematical formulas and equations (e.g., $E = mc^2$). |
+| | **Table Rendering** | Formats and displays structured data from the AI in a clean, readable table. |
+| | **Charts & Graphs** | Visualizes data with interactive charts directly within the conversation flow. |

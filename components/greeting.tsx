@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { MusicNavigation } from './music/MusicNavigation';
 
 export const Greeting = () => {
   return (
@@ -20,9 +21,18 @@ export const Greeting = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
         transition={{ delay: 0.6 }}
-        className="text-2xl text-zinc-500"
+        className="text-2xl text-zinc-500 mb-8"
       >
         How can I help you today?
+      </motion.div>
+      
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 10 }}
+        transition={{ delay: 0.7 }}
+      >
+        <MusicNavigation />
       </motion.div>
     </div>
   );

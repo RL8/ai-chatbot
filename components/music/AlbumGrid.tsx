@@ -42,11 +42,7 @@ export const AlbumGrid: React.FC<AlbumGridProps> = ({ albums, onAlbumClick }) =>
       return [...albums].sort((a, b) => {
         const rankA = getItemRank(a.id, 'album');
         const rankB = getItemRank(b.id, 'album');
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> feature/enhanced-music-animations
         if (rankA && rankB) return rankA - rankB;
         if (rankA) return -1; // ranked items first
         if (rankB) return 1;
@@ -93,11 +89,7 @@ export const AlbumGrid: React.FC<AlbumGridProps> = ({ albums, onAlbumClick }) =>
     <div className="flex h-full flex-col mobile-container">
       {/* Header with sort toggle and ranking mode */}
       <div className="flex items-center justify-between mb-4 sm:mb-6">
-<<<<<<< HEAD
-        <motion.h2 
-=======
         <motion.h2
->>>>>>> feature/enhanced-music-animations
           className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -105,17 +97,9 @@ export const AlbumGrid: React.FC<AlbumGridProps> = ({ albums, onAlbumClick }) =>
         >
           Albums
         </motion.h2>
-<<<<<<< HEAD
-        
-        <div className="flex items-center gap-2">
-          <SortToggle 
-            sortMode={sortMode} 
-=======
-
         <div className="flex items-center gap-2">
           <SortToggle
             sortMode={sortMode}
->>>>>>> feature/enhanced-music-animations
             onSortModeChange={setSortMode}
           />
           <Button
@@ -151,7 +135,6 @@ export const AlbumGrid: React.FC<AlbumGridProps> = ({ albums, onAlbumClick }) =>
       >
         {sortedAlbums.map((album, index) => {
           const rank = getItemRank(album.id, 'album');
-<<<<<<< HEAD
           const isRanked = rank !== undefined;
           
           return (
@@ -193,41 +176,6 @@ export const AlbumGrid: React.FC<AlbumGridProps> = ({ albums, onAlbumClick }) =>
                 </CardContent>
               </Card>
             </motion.div>
-=======
-          return (
-          <motion.div
-            key={album.id}
-            variants={albumVariants}
-            whileHover={{ scale: 1.05, y: -5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Card
-              className={`cursor-pointer touch-target h-full ${
-                isRankingMode && rank ? 'ring-2 ring-blue-500' : ''
-              }`}
-              style={{
-                borderColor: album.color,
-                borderWidth: "2px",
-              }}
-              onClick={() => handleAlbumClick(album, index)}
-            >
-              <CardContent className="flex h-full flex-col justify-center p-3 sm:p-4 text-center relative">
-                {/* Ranking badge */}
-                {rank && (
-                  <div className="absolute top-1 right-1 bg-blue-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
-                    {rank}
-                  </div>
-                )}
-                <h3 className="mb-1 text-sm sm:text-base font-semibold text-gray-900 dark:text-white text-truncate-2">
-                  {album.name}
-                </h3>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                  {album.releaseYear}
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
->>>>>>> feature/enhanced-music-animations
           );
         })}
       </motion.div>

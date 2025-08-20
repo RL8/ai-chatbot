@@ -381,9 +381,7 @@ export function TaylorSwiftDiscography() {
         {/* Enhanced sticky album tabs with animated indicator */}
         <motion.div 
           className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-gray-200 dark:border-gray-700"
-          onTouchStart={albumSwipeHandlers.onTouchStart}
-          onTouchMove={albumSwipeHandlers.onTouchMove}
-          onTouchEnd={albumSwipeHandlers.onTouchEnd}
+          {...albumSwipeHandlers.props}
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...springConfig, delay: 0.15 }}

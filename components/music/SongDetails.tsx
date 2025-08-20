@@ -48,7 +48,7 @@ export const SongDetails: React.FC<SongDetailsProps> = ({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       className="h-full flex flex-col mobile-container"
-      {...songSwipeHandlers}
+      {...songSwipeHandlers.props}
     >
       <HeaderComponent
         title="Song Details"

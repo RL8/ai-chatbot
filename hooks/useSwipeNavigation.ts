@@ -133,9 +133,13 @@ export function useSwipeNavigation({
   } : {};
 
   return {
-    ref: elementRef,
-    ...touchHandlers,
-    ...mouseHandlers,
+    // DOM-safe props that can be spread onto elements
+    props: {
+      ref: elementRef,
+      ...touchHandlers,
+      ...mouseHandlers,
+    },
+    // Data that should be accessed separately
     swipeData: {
       isSwiping,
       deltaX: touchStart.x - touchEnd.x,

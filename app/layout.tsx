@@ -20,12 +20,16 @@ export const viewport = {
 const geist = Geist({
   subsets: ['latin'],
   display: 'swap',
+  preload: true,
+  fallback: ['system-ui', 'arial'],
   variable: '--font-geist',
 });
 
 const geistMono = Geist_Mono({
   subsets: ['latin'],
   display: 'swap',
+  preload: true,
+  fallback: ['ui-monospace', 'monospace'],
   variable: '--font-geist-mono',
 });
 

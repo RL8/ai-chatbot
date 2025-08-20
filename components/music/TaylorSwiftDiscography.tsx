@@ -112,8 +112,8 @@ const viewVariants = {
 };
 
 export function TaylorSwiftDiscography() {
-  const [artist, setArtist] = useState<Artist>(getTaylorSwiftArtist());
-  const [albums, setAlbums] = useState<Album[]>(getAllAlbums());
+  const [artist, setArtist] = useState<Artist | null>(null);
+  const [albums, setAlbums] = useState<Album[]>([]);
   const [songs, setSongs] = useState<Song[]>([]);
   const [loading, setLoading] = useState(false);
   const [state, setState] = useState<DiscographyState>({
@@ -131,6 +131,12 @@ export function TaylorSwiftDiscography() {
   // Spring values for swipe feedback
   const swipeX = useSpring(0, smoothSpringConfig);
   const swipeOpacity = useTransform(swipeX, [-100, 0, 100], [0.7, 1, 0.7]);
+
+  // Lazy load music data when component mounts
+  useEffect(() => {
+    setArtist(getTaylorSwiftArtist());
+    setAlbums(getAllAlbums());
+  }, []);
 
   // Listen for natural language commands from the artifact system
   useEffect(() => {
@@ -299,7 +305,7 @@ export function TaylorSwiftDiscography() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ ...springConfig, delay: 0.2 }}
       >
-        <ArtistCard artist={artist} onSelect={handleArtistSelect} />
+        {artist ? <ArtistCard artist={artist} onSelect={handleArtistSelect} /> : <div>Loading...</div>}
       </motion.div>
     </motion.div>
   );

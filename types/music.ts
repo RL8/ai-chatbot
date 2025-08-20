@@ -25,3 +25,4 @@ export interface AppState {
   selectedAlbum: Album | null;
   selectedSong: Song | null;
 }
+

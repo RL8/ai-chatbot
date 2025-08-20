@@ -21,9 +21,9 @@ import { ArtifactMessages } from './artifact-messages';
 import { useSidebar } from './ui/sidebar';
 import { useArtifact } from '@/hooks/use-artifact';
 import { imageArtifact } from '@/artifacts/image/client';
-import { codeArtifact } from '@/artifacts/code/client';
 import { sheetArtifact } from '@/artifacts/sheet/client';
 import { textArtifact } from '@/artifacts/text/client';
+import { musicArtifact } from '@/artifacts/music/client';
 import equal from 'fast-deep-equal';
 import type { UseChatHelpers } from '@ai-sdk/react';
 import type { VisibilityType } from './visibility-selector';
@@ -31,9 +31,9 @@ import type { Attachment, ChatMessage } from '@/lib/types';
 
 export const artifactDefinitions = [
   textArtifact,
-  codeArtifact,
   imageArtifact,
   sheetArtifact,
+  musicArtifact,
 ];
 export type ArtifactKind = (typeof artifactDefinitions)[number]['kind'];
 

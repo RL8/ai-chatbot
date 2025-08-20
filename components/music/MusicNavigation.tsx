@@ -1,11 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { Music, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useMusicArtifact } from "@/hooks/use-music-artifact";
 
 export function MusicNavigation() {
+  const { openMusicDiscography } = useMusicArtifact();
+
   return (
     <Card className="w-full max-w-md mx-auto">
       <CardContent className="p-6">
@@ -28,12 +30,13 @@ export function MusicNavigation() {
           swipe gestures, and beautiful album artwork.
         </p>
         
-        <Link href="/taylor-swift">
-          <Button className="w-full flex items-center gap-2">
-            <span>Explore Discography</span>
-            <ArrowRight className="w-4 h-4" />
-          </Button>
-        </Link>
+        <Button 
+          onClick={openMusicDiscography}
+          className="w-full flex items-center gap-2"
+        >
+          <span>Explore Discography</span>
+          <ArrowRight className="w-4 h-4" />
+        </Button>
       </CardContent>
     </Card>
   );

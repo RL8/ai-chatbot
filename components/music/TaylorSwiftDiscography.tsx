@@ -37,6 +37,41 @@ export function TaylorSwiftDiscography() {
 
   const { selectAlbum, selectSong } = useMusicContext();
 
+  // Listen for natural language commands from the artifact system
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data?.type === 'music-command') {
+        const command = event.data.command.toLowerCase();
+        
+        // Basic navigation commands
+        if (command.includes('album') || command.includes('albums')) {
+          setState(prev => ({ ...prev, view: 'albums' }));
+        }
+        if (command.includes('artist') || command.includes('taylor')) {
+          setState(prev => ({ ...prev, view: 'artist' }));
+        }
+        if (command.includes('song') || command.includes('songs')) {
+          // Navigate to songs if an album is selected, otherwise go to albums
+          if (state.selectedAlbum) {
+            setState(prev => ({ ...prev, view: 'songs' }));
+          } else {
+            setState(prev => ({ ...prev, view: 'albums' }));
+          }
+        }
+        
+        // Album-specific commands
+        albums.forEach((album, index) => {
+          if (command.includes(album.name.toLowerCase())) {
+            handleAlbumClick(album, index);
+          }
+        });
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, [albums, state.selectedAlbum]);
+
   // Unified swipe navigation for album tabs
   const albumSwipeHandlers = useSwipeNavigation({
     onSwipeLeft: () => {

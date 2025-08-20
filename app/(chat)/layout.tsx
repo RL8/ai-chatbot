@@ -5,7 +5,7 @@ import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { auth } from '../(auth)/auth';
 import { DataStreamProvider } from '@/components/data-stream-provider';
 
-export const experimental_ppr = true;
+// PPR removed - not supported in Next.js 14.2.5
 
 export default async function Layout({
   children,

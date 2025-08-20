@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { Song } from "@/types/music";
 import { useMusicContext } from "@/context/MusicContext";
 
@@ -24,18 +25,60 @@ export const SongPills: React.FC<SongPillsProps> = ({
     onSongClick?.(song, index);
   };
 
+  // Animation variants for staggered song pills
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const pillVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 20, 
+      scale: 0.9 
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 25,
+        mass: 0.8
+      }
+    }
+  };
+
   return (
     <div className="flex h-full flex-col mobile-container">
-      <h2 className="mb-4 text-center text-lg sm:text-xl font-bold text-gray-900 dark:text-white px-4">
+      <motion.h2 
+        className="mb-4 text-center text-lg sm:text-xl font-bold text-gray-900 dark:text-white px-4"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+      >
         {albumName}
-      </h2>
+      </motion.h2>
 
       <div className="flex-1 scroll-vertical">
-        <div className="wrap-content gap-3 px-5 pb-5">
+        <motion.div 
+          className="wrap-content gap-3 px-5 pb-5"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {songs.map((song, index) => (
-            <button
+            <motion.button
               key={song.id}
-              className="inline-flex items-center rounded-full px-3 py-3 text-sm font-medium transition-all duration-200 touch-target hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 content-visibility-auto"
+              variants={pillVariants}
+              className="inline-flex items-center rounded-full px-3 py-3 text-sm font-medium touch-target focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 content-visibility-auto"
               style={{
                 border: `2px solid ${albumColor}`,
                 backgroundColor: `${albumColor}10`,
@@ -43,6 +86,17 @@ export const SongPills: React.FC<SongPillsProps> = ({
               }}
               onClick={() => handleSongClick(song, index)}
               aria-label={`Track ${song.trackNumber}: ${song.title}`}
+              whileHover={{ 
+                scale: 1.05,
+                borderColor: albumColor,
+                boxShadow: `0 4px 12px ${albumColor}40`
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{
+                type: "spring",
+                stiffness: 400,
+                damping: 25
+              }}
             >
               <span
                 className="mr-2 text-xs font-light flex-shrink-0"
@@ -53,9 +107,9 @@ export const SongPills: React.FC<SongPillsProps> = ({
               <span className="text-gray-900 dark:text-white truncate max-w-[120px] sm:max-w-[150px]">
                 {song.title}
               </span>
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,4 +1,7 @@
 import { cookies } from 'next/headers';
+// CORRECTED: Removed '/font' from the import path
+import { GeistSans } from 'geist/sans'; 
+import { GeistMono } from 'geist/mono';
 
 import { AppSidebar } from '@/components/app-sidebar';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
@@ -16,11 +19,15 @@ export default async function Layout({
   const isCollapsed = cookieStore.get('sidebar:state')?.value !== 'true';
 
   return (
-    <DataStreamProvider>
-      <SidebarProvider defaultOpen={!isCollapsed}>
-        <AppSidebar user={session?.user} />
-        <SidebarInset>{children}</SidebarInset>
-      </SidebarProvider>
-    </DataStreamProvider>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body>
+        <DataStreamProvider>
+          <SidebarProvider defaultOpen={!isCollapsed}>
+            <AppSidebar user={session?.user} />
+            <SidebarInset>{children}</SidebarInset>
+          </SidebarProvider>
+        </DataStreamProvider>
+      </body>
+    </html>
   );
 }

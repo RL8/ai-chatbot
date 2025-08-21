@@ -1,0 +1,21 @@
+[1mdiff --git a/app/layout.tsx b/app/layout.tsx[m
+[1mindex cae6b52..411f595 100644[m
+[1m--- a/app/layout.tsx[m
+[1m+++ b/app/layout.tsx[m
+[36m@@ -20,12 +20,16 @@[m [mexport const viewport = {[m
+ const geist = Geist({[m
+   subsets: ['latin'],[m
+   display: 'swap',[m
+[32m+[m[32m  preload: true,[m
+[32m+[m[32m  fallback: ['system-ui', 'arial'],[m
+   variable: '--font-geist',[m
+ });[m
+ [m
+ const geistMono = Geist_Mono({[m
+   subsets: ['latin'],[m
+   display: 'swap',[m
+[32m+[m[32m  preload: true,[m
+[32m+[m[32m  fallback: ['ui-monospace', 'monospace'],[m
+   variable: '--font-geist-mono',[m
+ });[m
+ [m

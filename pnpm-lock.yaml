@@ -114,9 +114,6 @@ importers:
       '@biomejs/biome':
         specifier: 1.9.4
         version: 1.9.4
-      '@playwright/test':
-        specifier: ^1.50.1
-        version: 1.55.0
       '@tailwindcss/typography':
         specifier: ^0.5.15
         version: 0.5.16(tailwindcss@3.4.17)
@@ -4105,6 +4102,7 @@ snapshots:
   '@playwright/test@1.55.0':
     dependencies:
       playwright: 1.55.0
+    optional: true
 
   '@radix-ui/number@1.1.1': {}
 
@@ -6345,13 +6343,15 @@ snapshots:
 
   pirates@4.0.7: {}
 
-  playwright-core@1.55.0: {}
+  playwright-core@1.55.0:
+    optional: true
 
   playwright@1.55.0:
     dependencies:
       playwright-core: 1.55.0
     optionalDependencies:
       fsevents: 2.3.2
+    optional: true
 
   possible-typed-array-names@1.1.0: {}
 

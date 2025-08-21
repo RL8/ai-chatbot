@@ -108,7 +108,7 @@ importers:
         specifier: ^1.0.5
         version: 1.0.5
       dotenv:
-        specifier: ^16.4.5
+        specifier: ^16.6.1
         version: 16.6.1
       drizzle-orm:
         specifier: ^0.34.0

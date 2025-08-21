@@ -3,10 +3,14 @@
 import { Music, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { useMusicArtifact } from "@/hooks/use-music-artifact";
+import { useRouter } from "next/navigation";
 
 export function MusicNavigation() {
-  const { openMusicDiscography } = useMusicArtifact();
+  const router = useRouter();
+  
+  const openMusicDiscography = () => {
+    router.push('/taylor-swift');
+  };
 
   return (
     <Card className="w-full max-w-md mx-auto">

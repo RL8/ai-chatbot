@@ -10,8 +10,8 @@ import { SessionProvider } from 'next-auth/react';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://chat.vercel.ai'),
-  title: 'Next.js Chatbot Template',
-  description: 'Next.js chatbot template using the AI SDK.',
+  title: 'Taylor Swift Music Curation',
+  description: 'Explore Taylor Swift\'s complete discography with interactive navigation.',
 };
 
 export const viewport = {
